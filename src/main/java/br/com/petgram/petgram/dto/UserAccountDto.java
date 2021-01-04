@@ -2,7 +2,6 @@ package br.com.petgram.petgram.dto;
 
 import br.com.petgram.petgram.model.UserAccount;
 import lombok.Getter;
-import org.apache.catalina.User;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -21,7 +20,7 @@ public class UserAccountDto {
         this.password = userAccount.getPassword();
     }
 
-    public static List<UserAccountDto> toDto(List<UserAccount> users){
+    public static List<UserAccountDto> listToDto(List<UserAccount> users){
         return users.stream().map(UserAccountDto::new).collect(Collectors.toList());
     }
 }

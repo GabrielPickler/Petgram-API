@@ -5,6 +5,7 @@ import br.com.petgram.petgram.dto.UserAccountFormDto;
 import br.com.petgram.petgram.model.UserAccount;
 import br.com.petgram.petgram.service.UserAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
@@ -26,8 +27,16 @@ public class UserAccountController {
     private UserAccountService userAccountService;
 
     @GetMapping
-    public List<UserAccountDto> find() {
-        return userAccountService.findAll();
+    public List<UserAccountDto> listAll() {
+        return UserAccountDto.listToDto(userAccountService.findAll());
+    }
+
+    @PostMapping(value = "/auth")
+    public ResponseEntity<UserAccountDto> logIn(@RequestBody UserAccountFormDto form) {
+        if(form == null){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return ResponseEntity.ok(userAccountService.findByUsername(form));
     }
 
     @PostMapping
