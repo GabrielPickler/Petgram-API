@@ -18,10 +18,10 @@ public class UserAccountService {
     private UserAccountRepository userAccountRepository;
 
     public void save(UserAccount userAccount) throws Exception {
-        if (userAccountRepository.findByUsername(userAccount.getUsername()) == null) {
+        if (userAccountRepository.findByUsername(userAccount.getUsername()) != null) {
             throw new PetgramException("Usuário já cadastrado!");
         }
-        if (userAccountRepository.findByEmail(userAccount.getEmail()) == null) {
+        if (userAccountRepository.findByEmail(userAccount.getEmail()) != null) {
             throw new PetgramException("Email já cadastrado!");
         }
         try {
