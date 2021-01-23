@@ -1,19 +1,12 @@
 package br.com.petgram.petgram.controller;
 
 import br.com.petgram.petgram.dto.PetDto;
-import br.com.petgram.petgram.dto.UserAccountDto;
-import br.com.petgram.petgram.dto.UserAccountFormDto;
-import br.com.petgram.petgram.model.Pet;
-import br.com.petgram.petgram.model.UserAccount;
 import br.com.petgram.petgram.service.PetsService;
-import br.com.petgram.petgram.service.UserAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.util.UriComponentsBuilder;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.net.URI;
 import java.util.List;
 
 @RestController
